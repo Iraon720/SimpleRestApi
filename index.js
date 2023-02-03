@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const usersRouter = require('./routers/users.router');
+const postRouter = require('./routers/post.router');
 
 dotenv.config();
 
@@ -16,7 +17,7 @@ db.sequelize.sync().then(() => {
 
 app.use(bodyParser.json());
 app.use('/users', usersRouter);
-
+app.use('/post', postRouter);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log('listening on port:' + PORT));
