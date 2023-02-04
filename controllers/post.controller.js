@@ -1,6 +1,6 @@
 const Post = require('../models/posts');
 
-async function httpUsersGet(req, res, next) {
+async function httpPostGet(req, res, next) {
   try {
     const post = await Post.findAll();
     res.send(post);
@@ -25,9 +25,9 @@ async function httpGetPostById(req, res, next) {
     res.status(400).send(e);
   }
 }
-async function httpCreateUser(req, res, next) {
+async function httpCreatePost(req, res, next) {
   try {
-    const newPost = await User.create(req.body);
+    const newPost = await Post.create(req.body);
     console.log('New post created : ID = ' + newPost.id);
     return res.status(200).json(newPost);
   } catch (e) {
